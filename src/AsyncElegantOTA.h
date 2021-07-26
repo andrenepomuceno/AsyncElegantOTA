@@ -12,6 +12,7 @@
     #include "flash_hal.h"
     #include "FS.h"
 #elif defined(ESP32)
+    #include "SPIFFS.h"
     #include "WiFi.h"
     #include "AsyncTCP.h"
     #include "Update.h"
@@ -22,8 +23,6 @@
 #include "Hash.h"
 #include "ESPAsyncWebServer.h"
 #include "FS.h"
-
-#include "elegantWebpage.h"
 
 
 class AsyncElegantOtaClass{
@@ -66,9 +65,7 @@ class AsyncElegantOtaClass{
                         return request->requestAuthentication();
                     }
                 }
-                AsyncWebServerResponse *response = request->beginResponse_P(200, "text/html", ELEGANT_HTML, ELEGANT_HTML_SIZE);
-                response->addHeader("Content-Encoding", "gzip");
-                request->send(response);
+                request->send(SPIFFS, "/update.html", "text/html");
             });
 
             _server->on("/update", HTTP_POST, [&](AsyncWebServerRequest *request) {
