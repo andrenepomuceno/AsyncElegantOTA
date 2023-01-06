@@ -4,7 +4,7 @@
 <p align="center">
 <img src="https://img.shields.io/github/last-commit/ayushsharma82/AsyncElegantOTA.svg?style=for-the-badge" />
 &nbsp;
-<img src="https://img.shields.io/travis/com/ayushsharma82/AsyncElegantOTA/master?style=for-the-badge" />
+<img src="https://img.shields.io/github/actions/workflow/status/ayushsharma82/AsyncElegantOTA/ci.yml?branch=master&style=for-the-badge" />
 &nbsp;
 <img src="https://img.shields.io/github/license/ayushsharma82/AsyncElegantOTA.svg?style=for-the-badge" />
 &nbsp;
@@ -73,18 +73,27 @@ Download the [Repository](https://github.com/ayushsharma82/AsyncElegantOTA/archi
 <h3>ESP8266</h3> 
 <h4>Arduino IDE:</h4>
 <p>https://randomnerdtutorials.com/esp8266-nodemcu-ota-over-the-air-arduino/</p>
-<h4>PlatformIO:</h4>
+<h4>PlatformIO (manual method):</h4>
 <p>https://randomnerdtutorials.com/esp8266-nodemcu-ota-over-the-air-vs-code/</p>
 <br>
 
 <h3>ESP32</h3>
 <h4>Arduino IDE:</h4>
 <p>https://randomnerdtutorials.com/esp32-ota-over-the-air-arduino/</p>
-<h4>PlatformIO:</h4>
+<h4>PlatformIO (manual method):</h4>
 <p>https://randomnerdtutorials.com/esp32-ota-over-the-air-vs-code/</p>
-
 <br>
- 
+<h3>PlatformIO Automatic Method</h3>
+<ul>
+<li> Copy the file "platformio_upload.py" from this repository into the same folder as your platformio.ini file
+<li> Set the upload method for your project in platformio.ini:
+</ul>
+
+```
+extra_scripts = platformio_upload.py
+upload_protocol = custom
+upload_url = <your upload URL, such as http://192.168.1.123/update>
+``` 
 <br>
 <h2>Examples</h2>
  
